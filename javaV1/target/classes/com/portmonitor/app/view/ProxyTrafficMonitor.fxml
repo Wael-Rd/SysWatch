@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.portmonitor.controller.ProxyTrafficMonitorController" styleClass="proxy-monitor-pane">
+    <top>
+<HBox spacing="10" styleClass="proxy-monitor-header" BorderPane.alignment="CENTER">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10" />
+    </padding>
+            <Label text="Proxy Traffic Monitor" styleClass="proxy-monitor-title" />
+            <Button fx:id="refreshButton" text="Refresh" styleClass="refresh-button" />
+        </HBox>
+    </top>
+    <center>
+<VBox spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10" />
+    </padding>
+            <TextField fx:id="searchField" promptText="Search requests..." styleClass="search-field" />
+            <TableView fx:id="requestsTable" styleClass="requests-table" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="methodColumn" text="Method" prefWidth="80" />
+                    <TableColumn fx:id="urlColumn" text="URL" prefWidth="400" />
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="80" />
+                    <TableColumn fx:id="timeColumn" text="Time" prefWidth="120" />
+                    <TableColumn fx:id="detailsColumn" text="Details" prefWidth="80" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

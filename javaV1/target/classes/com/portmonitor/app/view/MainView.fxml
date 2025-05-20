@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.control.Tooltip?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.portmonitor.controller.MainController">
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Ports">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10" />
+                            </padding>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <TextField fx:id="portSearchField" promptText="Search ports..." HBox.hgrow="ALWAYS" />
+<Button fx:id="refreshPortsButton" text="Refresh" styleClass="action-button">
+    <tooltip>
+        <Tooltip text="Refresh the ports list" />
+    </tooltip>
+</Button>
+<Button fx:id="exportPortsButton" text="Export" styleClass="action-button">
+    <tooltip>
+        <Tooltip text="Export ports data to CSV" />
+    </tooltip>
+</Button>
+<Button fx:id="monitorPortButton" text="Monitor" styleClass="action-button">
+    <tooltip>
+        <Tooltip text="Monitor selected port" />
+    </tooltip>
+</Button>
+                            </HBox>
+                            <TableView fx:id="portsTableView" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="portNumberColumn" text="Port Number" />
+                                    <TableColumn fx:id="protocolColumn" text="Protocol" />
+                                    <TableColumn fx:id="stateColumn" text="State" />
+                                    <TableColumn fx:id="processNameColumn" text="Process Name" />
+                                    <TableColumn fx:id="pidColumn" text="PID" />
+                                </columns>
+                            </TableView>
+                            <ProgressBar fx:id="portScanProgressBar" progress="0.0" maxWidth="Infinity" />
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab text="Processes">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10" />
+                            </padding>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <TextField fx:id="processSearchField" promptText="Search processes..." HBox.hgrow="ALWAYS" />
+<Button fx:id="refreshProcessesButton" text="Refresh" styleClass="action-button">
+    <tooltip>
+        <Tooltip text="Refresh the processes list" />
+    </tooltip>
+</Button>
+<Button fx:id="exportProcessesButton" text="Export" styleClass="action-button">
+    <tooltip>
+        <Tooltip text="Export processes data to CSV" />
+    </tooltip>
+</Button>
+<Button fx:id="monitorProcessButton" text="Monitor" styleClass="action-button">
+    <tooltip>
+        <Tooltip text="Monitor selected process" />
+    </tooltip>
+</Button>
+                            </HBox>
+                            <TableView fx:id="processesTableView" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="processPidColumn" text="PID" />
+                                    <TableColumn fx:id="processNameInfoColumn" text="Process Name" />
+                                    <TableColumn fx:id="cpuUsageColumn" text="CPU Usage" />
+                                    <TableColumn fx:id="memoryUsageColumn" text="Memory Usage" />
+                                    <TableColumn fx:id="userColumn" text="User" />
+                                </columns>
+                            </TableView>
+                            <ProgressBar fx:id="processLoadProgressBar" progress="0.0" maxWidth="Infinity" />
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab text="Monitored">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10" />
+                            </padding>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <TextField fx:id="entitySearchField" promptText="Search entities..." HBox.hgrow="ALWAYS" />
+<Button fx:id="deleteEntityButton" text="Delete" styleClass="action-button">
+    <tooltip>
+        <Tooltip text="Delete selected monitored entity" />
+    </tooltip>
+</Button>
+<Button fx:id="exportEntitiesButton" text="Export" styleClass="action-button">
+    <tooltip>
+        <Tooltip text="Export monitored entities data to CSV" />
+    </tooltip>
+</Button>
+                            </HBox>
+                            <TableView fx:id="monitoredEntitiesTableView" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="entityIdColumn" text="ID" />
+                                    <TableColumn fx:id="entityTypeColumn" text="Type" />
+                                    <TableColumn fx:id="entityNameColumn" text="Name" />
+                                    <TableColumn fx:id="entityTimestampColumn" text="Timestamp" />
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </content>
+                </Tab>
+<Tab text="Network Traffic">
+    <content>
+        <fx:include source="NetworkTrafficView.fxml" />
+    </content>
+</Tab>
+<Tab text="Proxy Traffic">
+    <content>
+        <fx:include source="ProxyTrafficMonitor.fxml" />
+    </content>
+</Tab>
+            </tabs>
+        </TabPane>
+    </center>
+ </BorderPane>
