@@ -99,7 +99,7 @@ cd SysWatch/javaV1
 mvn clean install
 
 # Run application
-java -jar target/syswatch-2.0.jar
+mvn javafx:run
 ```
 
 ## 📊 Database Configuration
